@@ -1,13 +1,10 @@
 @import "static/branding/app-colors";
 
 // z-indexes
+$z-modal: 10;
+$z-modal-backdrop: -1;
 $z-drawer: 10;
 $z-drawer-backdrop: -1;
-$z-index-sidebar: 120;
-$z-index-sidebar-backdrop: 115;
-$z-index-marketplace-card-header: 1;
-$z-index-marketplace-card-body: 2;
-$z-passport: 9;
 
 // breakpoints
 $x-large: 1920px;
@@ -30,10 +27,10 @@ $col-info: $_cornflowerBlue;
 $col-danger: $_darkRed;
 
 // app-content
-$app-content-padding-top: 2.5rem;
-$app-content-padding-right: 2.5rem;
-$app-content-padding-bottom: 2.5rem;
-$app-content-padding-left: 2.5rem;
+$app-content-padding-top: 1rem;
+$app-content-padding-right: 1rem;
+$app-content-padding-bottom: 1rem;
+$app-content-padding-left: 1rem;
 $app-content-padding:
         $app-content-padding-top
         $app-content-padding-right
@@ -57,9 +54,9 @@ $col-sidebar-backdrop: rgba($_black, 0.25);
 
 
 // navbar
-$navbar-padding-top: 2.5rem;
+$navbar-padding-top: 1rem;
 $navbar-padding-right: $app-content-padding-right;
-$navbar-padding-bottom: 2.5rem;
+$navbar-padding-bottom: 1rem;
 $navbar-padding-left: $app-content-padding-left;
 $navbar-padding:
         $navbar-padding-top
@@ -100,6 +97,9 @@ $col-drawer-bg: $col-app-block;
 $col-drawer-backdrop-bg: rgba(0, 0, 0, 0.1);
 $col-drawer-head-bg: rgba($col-app-block, 0.9);
 $col-drawer-head-text: $_dark-grayish-blue;
+
+// modal
+$col-modal-backdrop-bg: rgba(0, 0, 0, .25);
 
 // sign in form
 $col-sign-in-form: $col-app-block;

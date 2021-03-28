@@ -1,3 +1,4 @@
+import 'xp.css/dist/XP.css'
 import '@/scss/app.scss'
 import '@mdi/font/scss/materialdesignicons.scss'
 

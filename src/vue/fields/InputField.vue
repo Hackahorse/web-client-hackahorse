@@ -6,6 +6,12 @@
       'input-field--disabled': disabled,
     }"
   >
+    <div
+      v-if="label"
+      class="input-field__label"
+    >
+      {{ label }}
+    </div>
     <div class="input-field__wrapper">
       <input
         class="input-field__input"
@@ -16,21 +22,15 @@
         :placeholder="$attrs.placeholder || ' '"
         @blur="onBlur"
       >
-      <div
-        v-if="label"
-        class="input-field__label"
-      >
-        {{ label }}
-      </div>
-      <transition name="input-field__error-message-transition">
-        <div
-          v-if="errorMessage"
-          class="input-field__error-message"
-        >
-          {{ errorMessage }}
-        </div>
-      </transition>
     </div>
+    <transition name="input-field__error-message-transition">
+      <div
+        v-if="errorMessage"
+        class="input-field__error-message"
+      >
+        {{ errorMessage }}
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -110,62 +110,13 @@ export default {
 
 .input-field__wrapper {
   position: relative;
-}
-
-.input-field__label {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: $input-field-padding-left;
-  transform: translateY(-50%);
-  transition: 0.35s ease;
-  font-size: $input-field-font-size;
-  color: $col-field-txt;
-
-  .input-field--error & {
-    color: $col-field-error;
-  }
-
-  .input-field__input:focus ~ &,
-  .input-field__input:not(:placeholder-shown) ~ & {
-    top: 0;
-    left: 0;
-    transform: translateY(-75%);
-  }
-}
-
-.input-field__input {
-  position: relative;
-  border: none;
-  border-bottom: 0.1rem solid rgba($col-field-border, 0.5);
-  background: $col-field-bg;
-  color: $col-field-txt;
-  padding: $input-field-padding;
-  font-size: $input-field-font-size;
-  width: 100%;
-
-  .input-field--error & {
-    color: $col-field-error;
-    border-color: $col-field-error;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.input-field__error-message-transition-enter-active {
-  animation: slide-down 0.5s ease;
-}
-.input-field__error-message-transition-leave-active {
-  animation: slide-down 0.5s ease reverse;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-field__error-message {
-  position: absolute;
-  top: 125%;
-  left: $input-field-padding-left;
   color: $col-field-error;
+  margin-top: 0.5rem;
 }
 
 @keyframes slide-down {

@@ -4,6 +4,9 @@
     class="app"
     v-if="isAppInitialized"
     :key="appKey"
+    :style="{
+      'background': `url(${require('@/assets/images/bg-auth.jpg')})`
+    }"
   >
     <transition
       name="app__transition"
@@ -100,6 +103,11 @@ export default {
 <style lang="scss" scoped>
 @import "~@/scss/variables.scss";
 @import "~@/scss/mixins.scss";
+
+.app {
+  display: flex;
+  flex: 1;
+}
 
 .app__transition-enter-active {
   animation: fade-in 0.75s ease;

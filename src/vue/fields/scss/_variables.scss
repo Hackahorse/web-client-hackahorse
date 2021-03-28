@@ -1,18 +1,3 @@
 @import "~@/scss/variables.scss";
 
-$col-field-bg: $col-app-block;
-$col-field-txt: $col-app-block-text;
-$col-field-border: $col-field-txt;
 $col-field-error: $col-danger;
-
-$input-field-padding-top: 1rem;
-$input-field-padding-right: 1rem;
-$input-field-padding-bottom: 1rem;
-$input-field-padding-left: 1rem;
-$input-field-padding:
-        $input-field-padding-top
-        $input-field-padding-right
-        $input-field-padding-bottom
-        $input-field-padding-left;
-
-$input-field-font-size: 1.6rem;

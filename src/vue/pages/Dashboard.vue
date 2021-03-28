@@ -1,20 +1,31 @@
 <template>
   <div class="dashboard">
-    <div class="dashboard__count-down app__block">
+    <article
+      class="dashboard__count-down"
+      role="tabpanel"
+    >
       00:00:00
-    </div>
-    <div class="dashboard__total-staked-chart app__block">
+    </article>
+    <article
+      class="dashboard__total-staked-chart"
+      role="tabpanel"
+    >
       dashboard total staked chart
-    </div>
-    <div class="dashboard__staked-offers app__block">
-      dashboard staked offers
-    </div>
+    </article>
+    <article
+      class="dashboard__staked-offers"
+      role="tabpanel"
+    >
+      <dashboard-staked-offers />
+    </article>
   </div>
 </template>
 
 <script>
+import DashboardStakedOffers from '@/vue/pages/Dashboard/DashboardStakedOffers'
 export default {
   name: 'dashboard',
+  components: { DashboardStakedOffers },
 }
 </script>
 

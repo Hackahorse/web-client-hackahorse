@@ -7,19 +7,22 @@
         class="drawer__backdrop"
         @click="closeByClickOutside ? closeSelf() : ''"
       />
-      <div class="drawer__pane">
-        <div class="drawer__head">
-          <h2 class="drawer__heading">
+      <div class="window drawer__pane">
+        <div class="title-bar">
+          <div class="title-bar-text">
             <slot name="heading"/>
-          </h2>
-          <button
-            class="app__button-icon drawer__close-btn"
-            @click="closeSelf">
-            <i class="mdi mdi-close drawer__close-icon"/>
-          </button>
+          </div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button
+              aria-label="Close"
+              @click="closeSelf"
+            />
+          </div>
         </div>
-        <div class="drawer__body">
-          <slot/>
+        <div class="window__body">
+          <slot />
         </div>
       </div>
     </div>
@@ -81,27 +84,6 @@ $media-small: 460px;
   background-color: $col-drawer-backdrop-bg;
 }
 
-.drawer__close-btn {
-  padding: 0;
-  width: 4.5rem;
-  height: 4.5rem;
-  min-width: 4.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.drawer__close-icon {
-  display: flex;
-  font-size: 2.4rem;
-  margin-top: -0.2rem; // magic value to align icon in the center
-
-  &:before {
-    font-weight: 700;
-    vertical-align: middle;
-  }
-}
-
 .drawer__pane {
   position: absolute;
   top: 0;
@@ -113,39 +95,6 @@ $media-small: 460px;
   box-shadow: 0 1rem 2rem 0 $col-drawer-backdrop-bg;
   display: flex;
   flex-direction: column;
-}
-
-.drawer__head {
-  padding: 3rem;
-  background-color: $col-drawer-head-bg;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @include respond-to-height($media-small) {
-    padding: 1rem 1.5rem;
-  }
-}
-
-.drawer__heading {
-  font-size: 2.6rem;
-  color: $col-drawer-head-text;
-  line-height: normal;
-  font-weight: 400;
-}
-
-.drawer__body {
-  padding: 3rem;
-  background-color: $col-drawer-bg;
-  flex: 1;
-
-  // allows to scroll drawer content when it height more than drawer height
-  overflow-y: auto;
-  height: 0;
-
-  @include respond-to-height($media-small) {
-    padding: 1rem 1.5rem;
-  }
 }
 
 .drawer-transition-enter-active {

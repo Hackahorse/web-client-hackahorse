@@ -1,16 +1,29 @@
 <template>
-  <div class="sign-up">
-    <div class="sign-up__info">
-      <div class="sign-up__title">
-        {{ 'sign-up.title' | globalize }}
+  <div
+    class="sign-up"
+  >
+    <div class="sign-up__wrapper">
+      <div
+        class="window"
+      >
+        <div class="title-bar">
+          <div class="title-bar-text">
+            {{ 'sign-in.title' | globalize }}
+          </div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          <sign-up-form
+            :is-disabled="formMixin.isDisabled"
+            submit-event="submit"
+            @submit="handleChildFormSubmit"
+          />
+        </div>
       </div>
-    </div>
-    <div class="sign-up__form">
-      <sign-up-form
-        :is-disabled="formMixin.isDisabled"
-        submit-event="submit"
-        @submit="handleChildFormSubmit"
-      />
     </div>
   </div>
 </template>
@@ -96,28 +109,12 @@ export default {
 
 .sign-up {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-}
-
-.sign-up__info {
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  flex: 1;
 }
 
-.sign-up__title {
-  font-weight: 900;
-  font-size: 7em;
-}
-
-.sign-up__form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  background: $col-sign-up-form;
+.sign-up__wrapper {
+  min-width: 30rem;
 }
 </style>

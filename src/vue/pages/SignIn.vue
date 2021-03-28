@@ -1,11 +1,24 @@
 <template>
-  <div class="sign-in">
-    <div class="sign-in__form">
-      <sign-in-form />
-    </div>
-    <div class="sign-in__info">
-      <div class="sign-in__title">
-        {{ 'sign-in.title' | globalize }}
+  <div
+    class="sign-in"
+  >
+    <div class="sign-in__wrapper">
+      <div
+        class="window"
+      >
+        <div class="title-bar">
+          <div class="title-bar-text">
+            {{ 'sign-in.title' | globalize }}
+          </div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          <sign-in-form />
+        </div>
       </div>
     </div>
   </div>
@@ -13,9 +26,14 @@
 
 <script>
 import SignInForm from '@/vue/forms/SignInForm'
+
 export default {
   name: 'sign-in',
   components: { SignInForm },
+  data () {
+    return {
+    }
+  },
 }
 </script>
 
@@ -25,27 +43,12 @@ export default {
 
 .sign-in {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-}
-
-.sign-in__info {
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  flex: 1;
 }
 
-.sign-in__title {
-  font-weight: 900;
-  font-size: 7em;
-}
-
-.sign-in__form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  background: $col-sign-in-form;
+.sign-in__wrapper {
+  min-width: 30rem;
 }
 </style>

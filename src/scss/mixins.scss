@@ -1,16 +1,5 @@
 @import "variables";
 
-@mixin button () {
-  background: transparent;
-  border: 0.25rem solid $col-app-content-background;
-  padding: 1rem;
-  min-width: 15rem;
-  border-radius: 1rem;
-  text-transform: uppercase;
-}
-@mixin button-raised () {
-  @include button();
-}
 @mixin respond-to ($media) {
   @if $media == xsmall {
     @media only screen and (max-width: $x-small - 1px) {

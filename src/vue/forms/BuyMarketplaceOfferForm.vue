@@ -25,8 +25,6 @@
         </button>
       </template>
     </div>
-    <div class="app-form__field">
-    </div>
   </form>
 </template>
 
@@ -206,7 +204,6 @@ export default {
         if (error.meta.field === PROMOCODE_ERROR_FIELD) {
           this.isPromoCodeExist = false
         }
-        ErrorHandler.processWithoutFeedback(error)
       }
       this.isLoadingDiscount = false
     },
@@ -223,4 +220,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "./scss/forms";
+.buy-marketplace-offer-form {
+  padding: 2.5rem;
+}
 </style>

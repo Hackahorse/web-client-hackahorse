@@ -419,17 +419,7 @@
       "op_sale_create_tasks_not_found": "There is no key value for crowdfunding creation tasks",
       "op_sale_update_details_tasks_not_found": "There is no key value for crowdfunding details update tasks"
     },
-    "sidebar": {
-      "dashboard-link": "Dashboard",
-      "marketplace-link": "Marketplace"
-    },
-    "navbar": {
-
-    },
-    "footer": {
-
-    },
-    "passport": {
+    "app-content": {
       "dashboard-link": "Dashboard",
       "marketplace-link": "Marketplace",
       "logout-btn": "Log Out"
@@ -456,10 +446,10 @@
       "success-msg": "You have staked for this team, successfully."
     },
     "sign-in": {
-      "title": "Title"
+      "title": "Sign In"
     },
     "sign-up": {
-      "title": "Title"
+      "title": "Sign Up"
     },
     "marketplace-card": {
       "buy-btn": "Buy"

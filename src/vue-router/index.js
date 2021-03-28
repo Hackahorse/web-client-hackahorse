@@ -61,7 +61,7 @@ function redirectRouteGuard (to, from, next) {
 
   if (isLoggedIn) {
     if (to.name === vueRoutes.app.name) {
-      next(vueRoutes.dashboard)
+      next(vueRoutes.marketplace)
     } else {
       next()
     }

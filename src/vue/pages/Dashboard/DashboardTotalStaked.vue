@@ -1,17 +1,15 @@
 <template>
-  <div
-    class="marketplace-list"
-  >
+  <div class="dashboard-total-staked">
     <template v-if="isLoaded">
       <template v-if="isLoadFailed">
-        <error-message />
+        <error-message/>
       </template>
       <template v-else>
         <div
-          class="marketplace-list__wrapper"
+          class="dashboard-staked-offers__wrapper"
         >
           <article
-            class="marketplace-list__item"
+            class="dashboard-staked-offers__item"
             role="tabpanel"
             v-for="marketplaceOffer in marketplaceOffers"
             :key="marketplaceOffer.id"
@@ -27,7 +25,7 @@
       </template>
     </template>
     <template v-else>
-      <loader />
+      <loader/>
     </template>
     <modal
       :is-shown.sync="isModalShown"
@@ -40,17 +38,19 @@
 </template>
 
 <script>
-import Loader from '@/vue/common/Loader'
 import MarketplaceCard from '@/vue/pages/Marketplace/MarketplaceCard'
+import ErrorMessage from '@/vue/common/ErrorMessage'
+import Loader from '@/vue/common/Loader'
 import BuyMarketplaceOfferForm from '@/vue/forms/BuyMarketplaceOfferForm'
 import Modal from '@/vue/common/Modal'
-import ErrorMessage from '@/vue/common/ErrorMessage'
-import { ErrorHandler } from '@/js/helpers/error-handler'
+import { mapGetters } from 'vuex'
+import { vuexTypes } from '@/vuex'
 import { api, loadingDataViaLoop } from '@/api'
 import { MarketplaceOfferAskRecord } from '@/js/records/entities/marketplace-offer-ask.record'
+import { ErrorHandler } from '@/js/helpers/error-handler'
 
 export default {
-  name: 'marketplace-list',
+  name: 'dashboard-total-staked',
   components: {
     MarketplaceCard,
     ErrorMessage,
@@ -68,6 +68,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      vuexTypes.accountId,
+    ]),
     selectedOffer () {
       return this.marketplaceOffers.find(el => el.id === this.selectedOfferId)
     },
@@ -84,8 +87,13 @@ export default {
       this.isLoaded = false
       this.isLoadFailed = false
       try {
-        const response = await api.get('/integrations/marketplace/offers')
+        const response = await api.getWithSignature('/integrations/marketplace/buy_requests', {
+          filter: {
+            sender: this.accountId,
+          },
+        })
         const data = await loadingDataViaLoop(response)
+
         this.marketplaceOffers = data.map(el => new MarketplaceOfferAskRecord(el))
       } catch (e) {
         this.isLoadFailed = true
@@ -97,9 +105,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.marketplace-list {
-  width: 100%;
-  height: 100%;
-}
+<style scoped>
+
 </style>

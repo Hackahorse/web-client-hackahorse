@@ -1,7 +1,10 @@
 <template>
-  <div class="marketplace">
+  <article
+    role="tabpanel"
+    class="marketplace"
+  >
     <router-view />
-  </div>
+  </article>
 </template>
 
 <script>
@@ -11,10 +14,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/variables.scss";
-@import "~@/scss/mixins.scss";
-
 .marketplace {
-
+  display: flex;
+  flex: 1;
 }
 </style>

@@ -1,41 +1,74 @@
 <template>
   <div class="app-content">
-    <div class="app-content__sidebar">
-      <sidebar />
-    </div>
-    <div class="app-content__main">
-      <div class="app-content__navbar">
-        <navbar />
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">
+          {{ config.APP_NAME }}
+        </div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button
+            aria-label="Close"
+            @click="logOut"
+          />
+        </div>
       </div>
-      <div class="app-content__main-wrapper">
-        <notification />
+      <div class="window-body">
+        <div class="app-content__nav">
+          <router-link
+            class="app-content__link"
+            :to="vueRoutes.dashboard"
+          >
+            {{ 'app-content.dashboard-link' | globalize }}
+          </router-link>
+          <router-link
+            class="app-content__link"
+            :to="vueRoutes.marketplace"
+          >
+            {{ 'app-content.marketplace-link' | globalize }}
+          </router-link>
+        </div>
+        <notification/>
         <transition
           name="app-content__transition"
           mode="out-in"
         >
-          <router-view />
+          <router-view/>
         </transition>
       </div>
-<!--      <div class="app-content__footer">-->
-<!--        <app-footer />-->
-<!--      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/vue/navigation/Sidebar'
-// import AppFooter from '@/vue/navigation/Footer'
-import Navbar from '@/vue/navigation/Navbar'
 import Notification from '@/vue/common/Notification'
+import { mapActions } from 'vuex'
+import { vuexTypes } from '@/vuex'
+import config from '@/config'
+import { vueRoutes } from '@/vue-router/vueRoutes'
 
 export default {
   name: 'app-content',
   components: {
     Notification,
-    Sidebar,
-    // AppFooter,
-    Navbar,
+  },
+  data () {
+    return {
+      config,
+      vueRoutes,
+    }
+  },
+  methods: {
+    ...mapActions({
+      loadKyc: vuexTypes.LOAD_KYC,
+      loadAccount: vuexTypes.LOAD_ACCOUNT,
+      logOutAccount: vuexTypes.LOG_OUT,
+    }),
+    logOut () {
+      this.logOutAccount()
+      window.location.reload()
+    },
   },
 }
 </script>
@@ -45,48 +78,26 @@ export default {
 @import "~@/scss/mixins.scss";
 
 .app-content {
-  overflow: hidden;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-}
-
-.app-content__main {
-  overflow: hidden auto;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: $app-content-padding;
-}
-
-.app-content__main-wrapper {
   flex: 1;
-  background: $col-app-content-background;
-  padding: $app-content-padding-top 0 $app-content-padding-bottom 0;
+  padding: 3rem;
 }
 
-.app-content__sidebar {
-  display: none;
-
-  @include respond-to($hide-sidebar-breakpoint) {
-    display: block;
-  }
+.window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
-.app-content__transition-enter-active {
-  animation: fade-in 0.5s ease;
+.app-content__nav {
+  display: flex;
 }
 
-.app-content__transition-leave-active {
-  animation: fade-in 0.5s ease reverse;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+.app-content__link {
+  &:not(:last-child) {
+    margin-right: 2rem;
   }
 }
 </style>

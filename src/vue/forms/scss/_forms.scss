@@ -1,14 +1,4 @@
 .app-form {
   display: grid;
-  grid-gap: 5rem;
+  grid-gap: 1rem;
 }
-
-.app-form__group {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1.5rem;
-}
-
-.app-form__field {}
-
-.app-form__actions {}

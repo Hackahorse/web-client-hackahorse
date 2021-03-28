@@ -40,6 +40,12 @@
         <loader />
       </template>
       <template v-else>
+        <router-link
+          class="app-form__field"
+          :to="vueRoutes.signIn"
+        >
+          {{ 'sign-up-form.sign-in-link' | globalize }}
+        </router-link>
         <button
           type="submit"
           class="app__button app__button--success"
@@ -48,12 +54,6 @@
         </button>
       </template>
     </div>
-    <router-link
-      class="app-form__field"
-      :to="vueRoutes.signIn"
-    >
-      {{ 'sign-up-form.sign-in-link' | globalize }}
-    </router-link>
   </form>
 </template>
 
@@ -140,4 +140,9 @@ export default {
 <style lang="scss" scoped>
 @import "./scss/forms";
 
+.sign-up-form__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 </style>
