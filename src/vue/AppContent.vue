@@ -3,7 +3,8 @@
     <div class="window app-content__window">
       <div class="title-bar">
         <div class="title-bar-text">
-          {{ config.APP_NAME }}
+          {{ config.APP_NAME }},
+          {{ walletEmail }}
         </div>
         <div class="title-bar-controls">
           <button aria-label="Minimize"></button>
@@ -81,16 +82,21 @@ export default {
     ...mapGetters([
       vuexTypes.statsQuoteAsset,
       vuexTypes.accountBalanceByCode,
+      vuexTypes.walletEmail,
     ]),
     statsQuoteAssetBalance () {
       return this.accountBalanceByCode(this.statsQuoteAsset.code)
     },
+  },
+  async created () {
+    await this.loadAccountBalances()
   },
   methods: {
     ...mapActions({
       loadKyc: vuexTypes.LOAD_KYC,
       loadAccount: vuexTypes.LOAD_ACCOUNT,
       logOutAccount: vuexTypes.LOG_OUT,
+      loadAccountBalances: vuexTypes.LOAD_ACCOUNT_BALANCES_DETAILS,
     }),
     logOut () {
       this.logOutAccount()
