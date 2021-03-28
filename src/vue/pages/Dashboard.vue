@@ -1,21 +1,23 @@
 <template>
   <div class="dashboard">
     <article
-      class="dashboard__count-down"
-      role="tabpanel"
-    >
-      00:00:00
-    </article>
-    <article
       class="dashboard__total-staked-chart"
       role="tabpanel"
     >
-      dashboard total staked chart
+      <div class="dashboard__title">
+        {{ 'dashboard.total-staked-title' | globalize }}
+      </div>
+      <div class="dashboard__total-staked-chart-amount">
+        {{ statsQuoteAsset.issued }}
+      </div>
     </article>
     <article
       class="dashboard__staked-offers"
       role="tabpanel"
     >
+      <div class="dashboard__title">
+        {{ 'dashboard.staked-offers-title' | globalize }}
+      </div>
       <dashboard-staked-offers />
     </article>
   </div>
@@ -23,9 +25,16 @@
 
 <script>
 import DashboardStakedOffers from '@/vue/pages/Dashboard/DashboardStakedOffers'
+import { mapGetters } from 'vuex'
+import { vuexTypes } from '@/vuex'
 export default {
   name: 'dashboard',
   components: { DashboardStakedOffers },
+  computed: {
+    ...mapGetters([
+      vuexTypes.statsQuoteAsset,
+    ]),
+  },
 }
 </script>
 
@@ -41,6 +50,19 @@ export default {
 
 .dashboard__staked-offers {
   grid-column: 1 / -1;
+  padding-bottom: 5rem;
+}
+
+.dashboard__title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.dashboard__total-staked-chart-amount {
+  font-size: 3.5rem;
+  font-weight: 800;
 }
 
 </style>

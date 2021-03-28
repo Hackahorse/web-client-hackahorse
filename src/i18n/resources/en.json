@@ -453,6 +453,15 @@
     },
     "marketplace-card": {
       "buy-btn": "Buy"
+    },
+    "dashboard": {
+      "time-to-event-title": "Event Starts in",
+      "total-staked-title": "Total Staked",
+      "staked-offers-title": "Members, which you staked"
+    },
+    "marketplace-list": {
+      "no-data-title": "Empty!",
+      "no-data-msg": "No Members yet"
     }
   }
 }

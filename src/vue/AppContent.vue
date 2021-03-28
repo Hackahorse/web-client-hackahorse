@@ -93,11 +93,20 @@ export default {
 
 .app-content__nav {
   display: flex;
+  margin-bottom: 1rem;
 }
 
 .app-content__link {
+  font-size: 1.5rem;
+
   &:not(:last-child) {
     margin-right: 2rem;
   }
+}
+
+.clippy {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 </style>

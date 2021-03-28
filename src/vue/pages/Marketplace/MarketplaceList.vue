@@ -6,6 +6,12 @@
       <template v-if="isLoadFailed">
         <error-message />
       </template>
+      <template v-else-if="!marketplaceOffers.length">
+        <no-data-message
+          :title="'marketplace-list.no-data-title' | globalize"
+          :message="'marketplace-list.no-data-msg' | globalize"
+        />
+      </template>
       <template v-else>
         <div
           class="marketplace-list__wrapper"
@@ -48,10 +54,12 @@ import ErrorMessage from '@/vue/common/ErrorMessage'
 import { ErrorHandler } from '@/js/helpers/error-handler'
 import { api, loadingDataViaLoop } from '@/api'
 import { MarketplaceOfferAskRecord } from '@/js/records/entities/marketplace-offer-ask.record'
+import NoDataMessage from '@/vue/common/NoDataMessage'
 
 export default {
   name: 'marketplace-list',
   components: {
+    NoDataMessage,
     MarketplaceCard,
     ErrorMessage,
     Loader,
