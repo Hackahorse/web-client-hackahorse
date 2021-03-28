@@ -32,12 +32,6 @@ const router = new VueRouter({
       beforeEnter: redirectRouteGuard,
       children: [
         {
-          path: '/dashboard',
-          name: vueRoutes.dashboard.name,
-          component: _ => import('@/vue/pages/Dashboard'),
-          beforeEnter: inAppRouteGuard,
-        },
-        {
           path: '/marketplace',
           name: vueRoutes.marketplace.name,
           component: _ => import('@/vue/pages/Marketplace'),

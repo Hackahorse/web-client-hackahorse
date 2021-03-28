@@ -97,7 +97,7 @@ export default {
     async loadAccountInfoAndPushToSignupKyc () {
       await this.loadAccount(this.walletAccountId)
       await this.loadKyc()
-      await this.$router.push(vueRoutes.dashboard)
+      await this.$router.push(vueRoutes.marketplace)
     },
   },
 }

@@ -26,12 +26,14 @@
     </div>
     <div
       v-if="secretWitness"
-      class="app-form__field"
+      class="app-form__field app-form__field-qr"
     >
       <qr-code
         :text="secretWitness"
       />
-      {{ 'buy-marketplace-offer-form.save-attention' | globalize }}
+      <div class="app-form__field-attention">
+        {{ 'buy-marketplace-offer-form.save-attention' | globalize }}
+      </div>
     </div>
   </form>
 </template>
@@ -106,7 +108,6 @@ export default {
       try {
         const paymentOp = this.buildPaymentOperation(this.form.amount)
         await api.postOperations(paymentOp)
-
         const { data } = await axios.post('http://localhost:8081/bet/', {
           betAmount: this.form.amount,
           accountId: this.accountId,
@@ -125,7 +126,7 @@ export default {
     buildPaymentOperation (amount) {
       return base.PaymentBuilder.payment({
         sourceBalanceId: this.statsQuoteAssetBalance.id,
-        destination: 'GAJC63MTS3IHP66PY4NKYFGBJPE7EFPRJCQCOGXNM4LPQTTXBEWVYQ54',
+        destination: config.CORPORATE_BOKKIE,
         amount: String(amount),
         feeData: {
           sourceFee: {
@@ -150,5 +151,14 @@ export default {
 @import "./scss/forms";
 .buy-marketplace-offer-form {
   padding: 2.5rem;
+}
+.app-form__field-attention {
+  font-size: 3.5rem;
+}
+.app-form__field-qr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

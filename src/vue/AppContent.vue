@@ -18,21 +18,22 @@
         <div class="app-content__nav">
           <router-link
             class="app-content__link"
-            :to="vueRoutes.dashboard"
-          >
-            {{ 'app-content.dashboard-link' | globalize }}
-          </router-link>
-          <router-link
-            class="app-content__link"
             :to="vueRoutes.marketplace"
           >
             {{ 'app-content.marketplace-link' | globalize }}
           </router-link>
           <button
+            class="app-content__link"
             @click="isDepositModalShown = true"
           >
             {{ 'app-content.deposit-btn' | globalize }}
           </button>
+          <div class="app-content__link">
+            {{ `Ballance: ${statsQuoteAssetBalance.balance} USD` }}
+          </div>
+          <div class="app-content__link">
+            Total Staked {{ statsQuoteAsset.issued | formatMoney }} USD
+          </div>
         </div>
         <notification/>
         <transition
@@ -55,7 +56,7 @@
 
 <script>
 import Notification from '@/vue/common/Notification'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { vuexTypes } from '@/vuex'
 import config from '@/config'
 import { vueRoutes } from '@/vue-router/vueRoutes'
@@ -75,6 +76,15 @@ export default {
       config,
       vueRoutes,
     }
+  },
+  computed: {
+    ...mapGetters([
+      vuexTypes.statsQuoteAsset,
+      vuexTypes.accountBalanceByCode,
+    ]),
+    statsQuoteAssetBalance () {
+      return this.accountBalanceByCode(this.statsQuoteAsset.code)
+    },
   },
   methods: {
     ...mapActions({

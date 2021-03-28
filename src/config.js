@@ -189,6 +189,8 @@ export default Object.assign(
      */
     SUPPORT_URL: '',
 
+    CORPORATE_BOKKIE: 'GCKPXLM2FJQOG44MMXQIJVOIJQDFHHQZMM2ODYZVVDPA5EXIA6NPFJUW',
+
     /**
      * Related Mobile application configuration. You can omit:
      * MOBILE_APP_NAME, MOBILE_APP_AUTHOR - The Smart App Banner won’t show

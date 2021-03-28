@@ -16,6 +16,7 @@ import { i18n } from '@/i18n'
 
 import { globalize } from '@/vue/filters/globalize'
 import { abbreviate } from '@/vue/filters/abbreviate'
+import { formatMoney } from '@/vue/filters/formatMoney'
 
 async function init () {
   await initApi()
@@ -28,6 +29,7 @@ async function init () {
 
   Vue.filter('globalize', globalize)
   Vue.filter('abbreviate', abbreviate)
+  Vue.filter('formatMoney', formatMoney)
 
   Vue.component('qr-code', VueQRCodeComponent)
 
