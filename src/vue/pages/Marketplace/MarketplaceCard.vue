@@ -3,9 +3,8 @@
     class="marketplace-card"
   >
     <legend>
-      {{ asset.name }}
+      {{ offer.name }}
     </legend>
-    {{ asset.description }}
     <button
       type="button"
       class="app__button"
@@ -17,10 +16,7 @@
 </template>
 
 <script>
-import { MarketplaceOfferAskRecord } from '@/js/records/entities/marketplace-offer-ask.record'
 import BuyMarketplaceOfferForm from '@/vue/forms/BuyMarketplaceOfferForm'
-import { mapGetters } from 'vuex'
-import { vuexTypes } from '@/vuex'
 
 const EVENTS = {
   select: 'select',
@@ -32,24 +28,14 @@ export default {
   components: { BuyMarketplaceOfferForm },
   props: {
     offer: {
-      type: MarketplaceOfferAskRecord,
-      default: _ => new MarketplaceOfferAskRecord(),
+      type: Object,
+      default: _ => {},
     },
   },
   data () {
     return {
       EVENTS,
     }
-  },
-  computed: {
-    ...mapGetters([
-      vuexTypes.assetByCode,
-      vuexTypes.statsQuoteAsset,
-      vuexTypes.accountId,
-    ]),
-    asset () {
-      return this.assetByCode(this.offer.baseAssetCode)
-    },
   },
 }
 </script>

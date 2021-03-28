@@ -8,6 +8,7 @@ import router from '@/vue-router'
 import { buildStore } from '@/vuex'
 import moment from 'moment'
 import Notifications from 'vue-notification'
+import VueQRCodeComponent from 'vue-qrcode-component'
 
 import { initApi } from './api'
 import { keyValues } from '@/key-values'
@@ -27,6 +28,8 @@ async function init () {
 
   Vue.filter('globalize', globalize)
   Vue.filter('abbreviate', abbreviate)
+
+  Vue.component('qr-code', VueQRCodeComponent)
 
   Vue.use(Notifications)
   Vue.config.productionTip = false

@@ -6,20 +6,12 @@
       <template v-if="isLoadFailed">
         <error-message />
       </template>
-      <template v-else-if="!marketplaceOffers.length">
-        <no-data-message
-          :title="'marketplace-list.no-data-title' | globalize"
-          :message="'marketplace-list.no-data-msg' | globalize"
-        />
-      </template>
-      <template v-else>
-        <div
-          class="marketplace-list__wrapper"
-        >
+      <template v-else-if="hackaTeams.length">
+        <div class="marketplace-list__wrapper">
           <article
             class="marketplace-list__item"
             role="tabpanel"
-            v-for="marketplaceOffer in marketplaceOffers"
+            v-for="marketplaceOffer in hackaTeams"
             :key="marketplaceOffer.id"
           >
             <div class="marketplace-offers-slider__slider-item">
@@ -31,6 +23,12 @@
           </article>
         </div>
       </template>
+      <template v-else>
+        <no-data-message
+          :title="'marketplace-list.no-data-title' | globalize"
+          :message="'marketplace-list.no-data-msg' | globalize"
+        />
+      </template>
     </template>
     <template v-else>
       <loader />
@@ -38,6 +36,9 @@
     <modal
       :is-shown.sync="isModalShown"
     >
+      <template slot="head">
+        {{ selectedOffer.name }}
+      </template>
       <buy-marketplace-offer-form
         :offer="selectedOffer"
       />
@@ -55,6 +56,7 @@ import { ErrorHandler } from '@/js/helpers/error-handler'
 import { api, loadingDataViaLoop } from '@/api'
 import { MarketplaceOfferAskRecord } from '@/js/records/entities/marketplace-offer-ask.record'
 import NoDataMessage from '@/vue/common/NoDataMessage'
+import { hackaTeams } from '@/js/const/hackaTeams.const'
 
 export default {
   name: 'marketplace-list',
@@ -72,12 +74,13 @@ export default {
       isLoadFailed: false,
       isModalShown: false,
       marketplaceOffers: [],
-      selectedOfferId: '',
+      selectedOfferId: 1,
+      hackaTeams,
     }
   },
   computed: {
     selectedOffer () {
-      return this.marketplaceOffers.find(el => el.id === this.selectedOfferId)
+      return this.hackaTeams.find(el => el.id === this.selectedOfferId)
     },
   },
   async created () {

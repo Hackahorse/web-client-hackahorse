@@ -52,7 +52,7 @@ export default {
   name: 'modal',
 
   props: {
-    closeByClickOutside: { type: Boolean, default: false },
+    closeByClickOutside: { type: Boolean, default: true },
     isCloseBtn: { type: Boolean, default: true },
     isShown: { type: Boolean, default: true },
   },

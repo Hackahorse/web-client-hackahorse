@@ -27,6 +27,7 @@
 import DashboardStakedOffers from '@/vue/pages/Dashboard/DashboardStakedOffers'
 import { mapGetters } from 'vuex'
 import { vuexTypes } from '@/vuex'
+
 export default {
   name: 'dashboard',
   components: { DashboardStakedOffers },

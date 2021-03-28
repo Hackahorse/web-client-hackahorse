@@ -1,6 +1,6 @@
 <template>
   <div class="app-content">
-    <div class="window">
+    <div class="window app-content__window">
       <div class="title-bar">
         <div class="title-bar-text">
           {{ config.APP_NAME }}
@@ -14,7 +14,7 @@
           />
         </div>
       </div>
-      <div class="window-body">
+      <div class="window-body app-content__window-body">
         <div class="app-content__nav">
           <router-link
             class="app-content__link"
@@ -28,6 +28,11 @@
           >
             {{ 'app-content.marketplace-link' | globalize }}
           </router-link>
+          <button
+            @click="isDepositModalShown = true"
+          >
+            {{ 'app-content.deposit-btn' | globalize }}
+          </button>
         </div>
         <notification/>
         <transition
@@ -38,6 +43,13 @@
         </transition>
       </div>
     </div>
+    <modal
+      :is-shown.sync="isDepositModalShown"
+    >
+      <deposit-form
+        @submit="isDepositModalShown = false"
+      />
+    </modal>
   </div>
 </template>
 
@@ -47,14 +59,19 @@ import { mapActions } from 'vuex'
 import { vuexTypes } from '@/vuex'
 import config from '@/config'
 import { vueRoutes } from '@/vue-router/vueRoutes'
+import Modal from '@/vue/common/Modal'
+import DepositForm from '@/vue/forms/DepositForm'
 
 export default {
   name: 'app-content',
   components: {
+    DepositForm,
+    Modal,
     Notification,
   },
   data () {
     return {
+      isDepositModalShown: false,
       config,
       vueRoutes,
     }
@@ -78,21 +95,30 @@ export default {
 @import "~@/scss/mixins.scss";
 
 .app-content {
+  overflow: hidden auto;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 3rem;
 }
 
-.window {
+.app-content__window {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
 
+.app-content__window-body {
+  overflow: hidden auto;
+}
+
 .app-content__nav {
   display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 }
 

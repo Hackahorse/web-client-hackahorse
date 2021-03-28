@@ -422,7 +422,8 @@
     "app-content": {
       "dashboard-link": "Dashboard",
       "marketplace-link": "Marketplace",
-      "logout-btn": "Log Out"
+      "logout-btn": "Log Out",
+      "deposit-btn": "Deposit"
     },
     "input-field": {
       "caps-enabled-msg": "Warning: Caps-Lock is ON"
@@ -443,7 +444,14 @@
     "buy-marketplace-offer-form": {
       "amount-lbl": "Amount",
       "submit-btn": "Stake",
-      "success-msg": "You have staked for this team, successfully."
+      "success-msg": "You have staked for this team, successfully.",
+      "save-attention": "Attention, save this QR-Code!",
+      "staking-success": "Staked successfully"
+    },
+    "deposit-form": {
+      "select-lbl": "Select currency to deposit",
+      "amount-lbl": "Amount to deposit",
+      "submit-btn": "Deposit"
     },
     "sign-in": {
       "title": "Sign In"
