@@ -90,7 +90,7 @@ export default {
       this.deposit.qrCodeUrl = ''
       this.disableForm()
       try {
-        const { data } = await axios.post('http://localhost:8081/deposit', {
+        const { data } = await axios.post('http://35.226.166.114:8081/deposit', {
           amount: +this.form.amount,
           currency: this.form.selectedCurrency,
           accountId: this.accountId,

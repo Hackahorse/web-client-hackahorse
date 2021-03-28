@@ -108,7 +108,7 @@ export default {
       try {
         const paymentOp = this.buildPaymentOperation(this.form.amount)
         await api.postOperations(paymentOp)
-        const { data } = await axios.post('http://localhost:8081/bet/', {
+        const { data } = await axios.post('http://35.226.166.114:8081/bet/', {
           betAmount: this.form.amount,
           accountId: this.accountId,
           teamId: this.offer.id,
