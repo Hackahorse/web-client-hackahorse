@@ -1,5 +1,14 @@
 @import "static/branding/app-colors";
 
+// z-indexes
+$z-drawer: 10;
+$z-drawer-backdrop: -1;
+$z-index-sidebar: 120;
+$z-index-sidebar-backdrop: 115;
+$z-index-marketplace-card-header: 1;
+$z-index-marketplace-card-body: 2;
+$z-passport: 9;
+
 // breakpoints
 $x-large: 1920px;
 $large: 1440px;
@@ -21,10 +30,10 @@ $col-info: $_cornflowerBlue;
 $col-danger: $_darkRed;
 
 // app-content
-$app-content-padding-top: 1.5rem;
-$app-content-padding-right: 1.5rem;
-$app-content-padding-bottom: 1.5rem;
-$app-content-padding-left: 1.5rem;
+$app-content-padding-top: 2.5rem;
+$app-content-padding-right: 2.5rem;
+$app-content-padding-bottom: 2.5rem;
+$app-content-padding-left: 2.5rem;
 $app-content-padding:
         $app-content-padding-top
         $app-content-padding-right
@@ -32,23 +41,25 @@ $app-content-padding:
         $app-content-padding-left;
 
 // sidebar
+$hide-sidebar-breakpoint: $small;
 $sidebar-padding-top: 1rem;
 $sidebar-padding-right: 1rem;
 $sidebar-padding-bottom: 1rem;
 $sidebar-padding-left: 1rem;
 $sidebar-padding:
         $sidebar-padding-top
-        $sidebar-padding-right
+        0
         $sidebar-padding-bottom
-        $sidebar-padding-left;
+        0;
 $col-sidebar-header-border: $_black;
 $col-sidebar-footer-border: $_black;
+$col-sidebar-backdrop: rgba($_black, 0.25);
 
 
 // navbar
-$navbar-padding-top: 1rem;
+$navbar-padding-top: 2.5rem;
 $navbar-padding-right: $app-content-padding-right;
-$navbar-padding-bottom: 1rem;
+$navbar-padding-bottom: 2.5rem;
 $navbar-padding-left: $app-content-padding-left;
 $navbar-padding:
         $navbar-padding-top
@@ -58,12 +69,40 @@ $navbar-padding:
 
 
 // footer
-$footer-padding-top: 1rem;
+$footer-padding-top: 2.5rem;
 $footer-padding-right: $app-content-padding-right;
-$footer-padding-bottom: 1rem;
+$footer-padding-bottom: 2.5rem;
 $footer-padding-left: $app-content-padding-left;
 $footer-padding:
         $footer-padding-top
         $footer-padding-right
         $footer-padding-bottom
         $footer-padding-left;
+
+// app block
+$col-app-block: $_very-dark-grayish-blue;
+$col-app-block-text: $_dark-grayish-blue;
+$app-block-padding-top: 2.5rem;
+$app-block-padding-right: 2.5rem;
+$app-block-padding-bottom: 2.5rem;
+$app-block-padding-left: 2.5rem;
+$app-block-padding:
+        $app-block-padding-top
+        $app-block-padding-right
+        $app-block-padding-bottom
+        $app-block-padding-left;
+
+// marketplace card
+$col-marketplace-card-body: rgba($_very-dark-blue, 0.25);
+
+// drawer
+$col-drawer-bg: $col-app-block;
+$col-drawer-backdrop-bg: rgba(0, 0, 0, 0.1);
+$col-drawer-head-bg: rgba($col-app-block, 0.9);
+$col-drawer-head-text: $_dark-grayish-blue;
+
+// sign in form
+$col-sign-in-form: $col-app-block;
+
+// sign up form
+$col-sign-up-form: $col-app-block;

@@ -16,6 +16,8 @@ export default {
 
 .footer {
   background: $col-footer-background;
+  color: $col-footer-text;
   padding: $footer-padding;
+  border-radius: 1.5rem;;
 }
 </style>

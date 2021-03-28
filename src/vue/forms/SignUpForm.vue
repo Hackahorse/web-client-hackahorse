@@ -42,7 +42,7 @@
       <template v-else>
         <button
           type="submit"
-          class="app__button-raised"
+          class="app__button app__button--success"
         >
           {{ 'sign-up-form.submit-btn' | globalize }}
         </button>

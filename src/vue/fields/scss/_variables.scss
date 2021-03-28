@@ -1,10 +1,9 @@
 @import "~@/scss/variables.scss";
 
-$col-field-bg: #fff;
-$col-field-txt: #000;
-$col-field-border: #000;
-$col-field-shadow: #000;
-$col-field-placeholder: #000;
+$col-field-bg: $col-app-block;
+$col-field-txt: $col-app-block-text;
+$col-field-border: $col-field-txt;
+$col-field-error: $col-danger;
 
 $input-field-padding-top: 1rem;
 $input-field-padding-right: 1rem;

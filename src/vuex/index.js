@@ -7,6 +7,7 @@ import idleHandler from './modules/idle-handler.module'
 import assets from './modules/assets.module'
 import kyc from './modules/kyc.module'
 import businesses from './modules/businesses.module'
+import identities from './modules/identities.module'
 
 import { Wallet } from '@tokend/js-sdk'
 import { useWallet } from '@/api'
@@ -73,6 +74,7 @@ function buildStore () {
       assets,
       kyc,
       businesses,
+      identities,
     },
     plugins: [sessionStoragePlugin],
   })

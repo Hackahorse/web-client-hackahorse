@@ -46,5 +46,6 @@ export default {
   justify-content: center;
   align-items: center;
   width: 50%;
+  background: $col-sign-in-form;
 }
 </style>

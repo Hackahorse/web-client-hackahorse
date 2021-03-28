@@ -429,6 +429,11 @@
     "footer": {
 
     },
+    "passport": {
+      "dashboard-link": "Dashboard",
+      "marketplace-link": "Marketplace",
+      "logout-btn": "Log Out"
+    },
     "input-field": {
       "caps-enabled-msg": "Warning: Caps-Lock is ON"
     },
@@ -447,13 +452,17 @@
     },
     "buy-marketplace-offer-form": {
       "amount-lbl": "Amount",
-      "submit-btn": "Stake"
+      "submit-btn": "Stake",
+      "success-msg": "You have staked for this team, successfully."
     },
     "sign-in": {
       "title": "Title"
     },
     "sign-up": {
       "title": "Title"
+    },
+    "marketplace-card": {
+      "buy-btn": "Buy"
     }
   }
 }

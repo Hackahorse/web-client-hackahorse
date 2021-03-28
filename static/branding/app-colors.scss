@@ -11,17 +11,29 @@ $_lightRed: #ef5350;
 $_orangePeel: #ffa333;
 $_cornflowerBlue: #7b6eff;
 
+
+$_very-dark-blue: #212529;
+$_very-dark-grayish-blue: #2b2f33;
+$_dark-grayish-blue: #959799;
+$_bright-red: #fd413c;
+
 // app
-$col-app-content-background: $_red;
+$col-app-content-background: $_very-dark-blue;
 
 // sidebar
-$col-sidebar-background: $_green;
-$col-sidebar-txt: $_black;
+$col-sidebar-background: $_very-dark-grayish-blue;
+$col-sidebar-txt: $_dark-grayish-blue;
+$col-sidebar-txt-active: $_bright-red;
 
 // navbar
-$col-navbar-background: $_vivid_blue;
-$col-navbar-text: $_black;
+$col-navbar-background: $_very-dark-grayish-blue;
+$col-navbar-text: $_dark-grayish-blue;
+
+// passport
+$col-passport-background: $_very-dark-grayish-blue;
+$col-passport-text: $_dark-grayish-blue;
+$col-passport-text-hover: $_white;
 
 // footer
-$col-footer-background: $_orange;
-$col-footer-text: $_orange;
+$col-footer-background: $_very-dark-grayish-blue;
+$col-footer-text: $_dark-grayish-blue;

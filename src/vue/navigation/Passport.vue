@@ -16,18 +16,29 @@
         v-if="isDropdownOpen"
         class="passport__dropdown"
       >
-        <router-link
-          class="passport__dropdown-item"
-          :to="vueRoutes.dashboard"
-          @click="closeDropdown"
-        >
-          {{ 'passport.dashboard' | globalize }}
-        </router-link>
+        <template v-if="$route.name !== vueRoutes.marketplaceList">
+          <router-link
+            class="passport__dropdown-item"
+            :to="vueRoutes.marketplaceList"
+            @click="closeDropdown"
+          >
+            {{ 'passport.marketplace-link' | globalize }}
+          </router-link>
+        </template>
+        <template v-if="$route.name !== vueRoutes.dashboard">
+          <router-link
+            class="passport__dropdown-item"
+            :to="vueRoutes.dashboard"
+            @click="closeDropdown"
+          >
+            {{ 'passport.dashboard-link' | globalize }}
+          </router-link>
+        </template>
         <button
           class="passport__dropdown-item"
           @click="logOut"
         >
-          {{ 'passport.log-out' | globalize }}
+          {{ 'passport.logout-btn' | globalize }}
         </button>
       </div>
     </transition>
@@ -118,8 +129,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/scss/variables.scss";
+@import "~@/scss/mixins.scss";
+
 .passport {
   position: relative;
+  z-index: $z-passport;
 }
 
 .passport__header {
@@ -128,9 +143,23 @@ export default {
 }
 
 .passport__dropdown {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: 250%;
+  right: -$navbar-padding-right;
+  background: $col-passport-background;
+  border-radius: 1.5rem;
+}
+
+.passport__dropdown-item {
+  display: flex;
+  padding: 1.5rem 2rem;
+  color: $col-passport-text;
+
+  &:hover {
+    color: $col-passport-text-hover;
+  }
 }
 
 .passport__dropdown-enter-active {

@@ -61,14 +61,9 @@ export class EventBus extends Vue {
       warning: 'warning',
       error: 'error',
       info: 'info',
-      customersUpdateList: 'customers:updateList',
-      customersMassIssue: 'customers:massIssue',
-      customersHideSelect: 'customers:hideSelect',
-      assetsUpdateList: 'assets:updateList',
-      assetsSetBusinessOwnerId: 'assets:setBusinessOwnerId',
       atomicSwapsUpdateList: 'atomicSwaps:updateList',
       updateAccountRole: 'updateAccountRole',
-      promoCodesUpdateList: 'promoCodes:updateList',
+      openSidebar: 'openSidebar',
     }
   }
 

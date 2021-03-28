@@ -120,6 +120,11 @@ export default {
   transform: translateY(-50%);
   transition: 0.35s ease;
   font-size: $input-field-font-size;
+  color: $col-field-txt;
+
+  .input-field--error & {
+    color: $col-field-error;
+  }
 
   .input-field__input:focus ~ &,
   .input-field__input:not(:placeholder-shown) ~ & {
@@ -137,6 +142,12 @@ export default {
   color: $col-field-txt;
   padding: $input-field-padding;
   font-size: $input-field-font-size;
+  width: 100%;
+
+  .input-field--error & {
+    color: $col-field-error;
+    border-color: $col-field-error;
+  }
 
   &:focus {
     outline: none;
@@ -154,7 +165,7 @@ export default {
   position: absolute;
   top: 125%;
   left: $input-field-padding-left;
-
+  color: $col-field-error;
 }
 
 @keyframes slide-down {

@@ -9,18 +9,23 @@
       </div>
       <div class="app-content__main-wrapper">
         <notification />
-        <router-view />
+        <transition
+          name="app-content__transition"
+          mode="out-in"
+        >
+          <router-view />
+        </transition>
       </div>
-      <div class="app-content__footer">
-        <app-footer />
-      </div>
+<!--      <div class="app-content__footer">-->
+<!--        <app-footer />-->
+<!--      </div>-->
     </div>
   </div>
 </template>
 
 <script>
 import Sidebar from '@/vue/navigation/Sidebar'
-import AppFooter from '@/vue/navigation/Footer'
+// import AppFooter from '@/vue/navigation/Footer'
 import Navbar from '@/vue/navigation/Navbar'
 import Notification from '@/vue/common/Notification'
 
@@ -29,7 +34,7 @@ export default {
   components: {
     Notification,
     Sidebar,
-    AppFooter,
+    // AppFooter,
     Navbar,
   },
 }
@@ -47,14 +52,41 @@ export default {
 }
 
 .app-content__main {
+  overflow: hidden auto;
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: $app-content-padding;
 }
 
 .app-content__main-wrapper {
   flex: 1;
   background: $col-app-content-background;
-  padding: $app-content-padding;
+  padding: $app-content-padding-top 0 $app-content-padding-bottom 0;
+}
+
+.app-content__sidebar {
+  display: none;
+
+  @include respond-to($hide-sidebar-breakpoint) {
+    display: block;
+  }
+}
+
+.app-content__transition-enter-active {
+  animation: fade-in 0.5s ease;
+}
+
+.app-content__transition-leave-active {
+  animation: fade-in 0.5s ease reverse;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

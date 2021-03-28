@@ -134,14 +134,46 @@ button {
   }
 }
 
+a {
+  color: inherit;
+  text-transform: none;
+  text-decoration: none;
+}
+
 .app__button {
   @include button();
+
+  &--danger {
+    border-color: $col-danger;
+    color: $col-danger;
+  }
+
+  &--success {
+    border-color: $col-success;
+    color: $col-success;
+  }
+
+  &--warn {
+    border-color: $col-warning;
+    color: $col-warning;
+  }
+
+  &--info {
+    border-color: $col-info;
+    color: $col-info;
+  }
 }
 
 .app__button-raised {
   @include button-raised();
+}
 
-  &--danger {
-    background-color: $col-error;
-  }
+.app__block {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: $col-app-block;
+  color: $col-app-block-text;
+  padding: $app-block-padding;
+  border-radius: 1.5rem;
 }

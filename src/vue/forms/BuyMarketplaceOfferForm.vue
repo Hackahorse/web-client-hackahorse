@@ -1,7 +1,7 @@
 <template>
   <form
     class="buy-marketplace-offer-form app-form"
-    @click.prevent="isFormValid() && submit()"
+    @submit.prevent="isFormValid() && submit()"
   >
     <div class="app-form__field">
       <input-field
@@ -13,35 +13,44 @@
       />
     </div>
     <div class="app-form__actions">
-      <button
-        class="app__button-raised"
-        type="submit"
-      >
-        {{ 'buy-marketplace-offer-form.submit-btn' | globalize }}
-      </button>
+      <template v-if="formMixin.isDisabled">
+        <loader />
+      </template>
+      <template v-else>
+        <button
+          class="app__button app__button--success"
+          type="submit"
+        >
+          {{ 'buy-marketplace-offer-form.submit-btn' | globalize }}
+        </button>
+      </template>
+    </div>
+    <div class="app-form__field">
     </div>
   </form>
 </template>
 
 <script>
 import FormMixin from '@/vue/mixins/form.mixin'
+import MarketplaceOfferBidMixin from '@/vue/mixins/marketplace-offer-bid.mixin'
+import Loader from '@/vue/common/Loader'
 import { ErrorHandler } from '@/js/helpers/error-handler'
 import { MarketplaceOfferAskRecord } from '@/js/records/entities/marketplace-offer-ask.record'
 import config from '@/config'
-import { api } from '@/api'
-import debounce from 'lodash/debounce'
 import { MathUtil } from '@/js/utils'
-import { vuexTypes } from '@/vuex'
-import { mapGetters } from 'vuex'
-import { PAYMENT_METHODS } from '@/js/const/payment-methods.const'
+import debounce from 'lodash/debounce'
 import { globalize } from '@/vue/filters/globalize'
 import {
   amountRange,
   required,
 } from '@/validators'
+import { api } from '@/api'
+import { vuexTypes } from '@/vuex'
+import { mapGetters } from 'vuex'
+import { PAYMENT_METHODS } from '@/js/const/payment-methods.const'
 import { ATOMIC_SWAP_BID_TYPES } from '@/js/const/atomic-swap-bid-types.const'
 import { Bus } from '@/js/helpers/event-bus'
-import MarketplaceOfferBidMixin from '@/vue/mixins/marketplace-offer-bid.mixin'
+import axios from 'axios'
 
 const PROMOCODE_ERROR_FIELD = 'promocode'
 const UAH_CODE = 'UAH'
@@ -53,6 +62,9 @@ const EVENTS = {
 
 export default {
   name: 'buy-marketplace-offer-form',
+  components: {
+    Loader,
+  },
   mixins: [FormMixin, MarketplaceOfferBidMixin],
   props: {
     offer: {
@@ -70,6 +82,7 @@ export default {
       },
       discount: '',
       totalPrice: '',
+      witness: {},
       isLoadingDiscount: false,
       isPromoCodeExist: false,
     }
@@ -108,7 +121,7 @@ export default {
 
     getBonusErrorMessage () {
       return this.isSelectedBonus
-        ? globalize('buy-atomic-swap-form.buy-for-bonus')
+        ? globalize('buy-marketplace-offer-form.buy-for-bonus')
         : ''
     },
   },
@@ -142,7 +155,6 @@ export default {
           this.offer.id,
           this.form.promoCode,
         )
-        console.log(atomicSwapBid)
         switch (atomicSwapBid.type) {
           case ATOMIC_SWAP_BID_TYPES.redirect:
             window.location.href = atomicSwapBid.payUrl
@@ -153,10 +165,15 @@ export default {
             break
           case ATOMIC_SWAP_BID_TYPES.internal:
             await api.signAndSendTransaction(atomicSwapBid.tx)
-            Bus.success('buy-atomic-swap-form.success-msg')
+            Bus.success('buy-marketplace-offer-form.success-msg')
             this.$emit(EVENTS.updateListAndCloseDrawer)
             break
         }
+        await axios.post('http://localhost:8081/bet/', {
+          betAmount: this.form.amount,
+          accountId: this.accountId,
+          teamId: this.offer.id,
+        })
       } catch (e) {
         ErrorHandler.process(e)
       }

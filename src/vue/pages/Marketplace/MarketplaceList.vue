@@ -6,15 +6,9 @@
       </template>
       <template v-else>
         <div class="marketplace-list__wrapper">
-          <div
-            v-for="offer in marketplaceOffers"
-            :key="offer.id"
-            class="marketplace-list__card"
-          >
-            <marketplace-card
-              :offer="offer"
-            />
-          </div>
+          <marketplace-offers-slider
+            :marketplace-offers="marketplaceOffers"
+          />
         </div>
       </template>
     </template>
@@ -30,11 +24,11 @@ import Loader from '@/vue/common/Loader'
 import ErrorMessage from '@/vue/common/ErrorMessage'
 import { api, loadingDataViaLoop } from '@/api'
 import { MarketplaceOfferAskRecord } from '@/js/records/entities/marketplace-offer-ask.record'
-import MarketplaceCard from '@/vue/pages/Marketplace/MarketplaceCard'
+import MarketplaceOffersSlider from '@/vue/common/MarketplaceOffersSlider'
 
 export default {
   name: 'marketplace-list',
-  components: { MarketplaceCard, ErrorMessage, Loader },
+  components: { MarketplaceOffersSlider, ErrorMessage, Loader },
   data () {
     return {
       isLoaded: false,

@@ -33,7 +33,7 @@
       </template>
       <template v-else>
         <button
-          class="app__button-raised"
+          class="app__button app__button--success"
           type="submit"
           :disabled="formMixin.isDisabled"
         >
