@@ -925,6 +925,11 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
+"@mdi/font@^5.9.55":
+  version "5.9.55"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-5.9.55.tgz#41acd50b88073ded7095fc3029d8712b6e12f38e"
+  integrity sha512-jswRF6q3eq8NWpWiqct6q+6Fg/I7nUhrxYJfiEM8JJpap0wVJLQdbKtyS65GdlK7S7Ytnx3TTi/bmw+tBhkGmg==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
@@ -9688,6 +9693,11 @@ vue-router@^3.2.0:
   version "3.5.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.5.1.tgz"
   integrity sha512-RRQNLT8Mzr8z7eL4p7BtKvRaTSGdCbTy2+Mm5HTJvLGYSSeG9gDzNasJPP/yOYKLy+/cLG/ftrqq5fvkFwBJEw==
+
+vue-spinner@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vue-spinner/-/vue-spinner-1.0.4.tgz#0e794d9d93acb23b5b6564042157a531e7ce413b"
+  integrity sha512-GNG2F+8BLX201JT/jUX+84Gsi3ZteVQwt9K7mues3ts9FcQ95dGn7uu6a5ndSxdYYUEzfh1KngZiOE0u+l4itA==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"

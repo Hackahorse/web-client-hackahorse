@@ -1,4 +1,5 @@
 import '@/scss/app.scss'
+import '@mdi/font/scss/materialdesignicons.scss'
 
 import Vue from 'vue'
 import App from '@/vue/App.vue'
@@ -9,7 +10,9 @@ import moment from 'moment'
 import { initApi } from './api'
 import { keyValues } from '@/key-values'
 import { i18n } from '@/i18n'
-import { globalize } from './vue/filters/globalize'
+
+import { globalize } from '@/vue/filters/globalize'
+import { abbreviate } from '@/vue/filters/abbreviate'
 
 async function init () {
   await initApi()
@@ -21,6 +24,7 @@ async function init () {
   await i18n.init()
 
   Vue.filter('globalize', globalize)
+  Vue.filter('abbreviate', abbreviate)
 
   Vue.config.productionTip = false
 

@@ -56,14 +56,6 @@ class I18n {
       case 'en':
         result = _merge(
           await require.ensure([], require => require('./resources/en')),
-          await require.ensure([], require => require('./resources/en.terms')),
-        )
-        break
-
-      case 'ru':
-        result = _merge(
-          await require.ensure([], require => require('./resources/ru')),
-          await require.ensure([], require => require('./resources/ru.terms')),
         )
         break
 
@@ -150,7 +142,7 @@ class I18n {
       fallbackLng: 'en',
       debug: false,
       resources: {},
-      whitelist: ['en', 'ru'],
+      whitelist: ['en'],
       // set to true if you need en-US/en-UK lng's:
       nonExplicitWhitelist: false,
       detection: {

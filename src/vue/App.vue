@@ -5,7 +5,10 @@
     v-if="isAppInitialized"
     :key="appKey"
   >
-    <transition name="app__transition">
+    <transition
+      name="app__transition"
+      mode="out-in"
+    >
       <router-view />
     </transition>
   </div>
@@ -61,12 +64,14 @@ export default {
       loadAccount: vuexTypes.LOAD_ACCOUNT,
       loadAssets: vuexTypes.LOAD_ASSETS,
       startIdle: vuexTypes.START_IDLE,
+      loadMyBusinesses: vuexTypes.LOAD_MY_BUSINESSES,
     }),
 
     async initApp () {
       if (this.isLoggedIn) {
         await this.restoreSession()
         await this.loadAccount(this.walletAccountId)
+        await this.loadMyBusinesses()
       }
       await this.loadAssets()
     },
@@ -97,11 +102,11 @@ export default {
 @import "~@/scss/mixins.scss";
 
 .app__transition-enter-active {
-  animation: fade-in 0.35s ease;
+  animation: fade-in 0.75s ease;
 }
 
 .app__transition-leave-active {
-  animation: fade-in 0.35s ease reverse;
+  animation: fade-in 0.75s ease reverse;
 }
 
 @keyframes fade-in {

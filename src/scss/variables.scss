@@ -1,4 +1,69 @@
 @import "static/branding/app-colors";
 
+// breakpoints
+$x-large: 1920px;
+$large: 1440px;
+$x-medium: 1200px;
+$medium: 1024px;
+$tablet: 820px;
+$small: 600px;
+$x-small: 480px;
 
 $sidebar-width: 27.5rem;
+
+// status colors:
+$col-accent: $_lightRed;
+$col-pending: $_orange;
+$col-warning: $_orangePeel;
+$col-success: $_green;
+$col-error: $_lightRed;
+$col-info: $_cornflowerBlue;
+$col-danger: $_darkRed;
+
+// app-content
+$app-content-padding-top: 1.5rem;
+$app-content-padding-right: 1.5rem;
+$app-content-padding-bottom: 1.5rem;
+$app-content-padding-left: 1.5rem;
+$app-content-padding:
+        $app-content-padding-top
+        $app-content-padding-right
+        $app-content-padding-bottom
+        $app-content-padding-left;
+
+// sidebar
+$sidebar-padding-top: 1rem;
+$sidebar-padding-right: 1rem;
+$sidebar-padding-bottom: 1rem;
+$sidebar-padding-left: 1rem;
+$sidebar-padding:
+        $sidebar-padding-top
+        $sidebar-padding-right
+        $sidebar-padding-bottom
+        $sidebar-padding-left;
+$col-sidebar-header-border: $_black;
+$col-sidebar-footer-border: $_black;
+
+
+// navbar
+$navbar-padding-top: 1rem;
+$navbar-padding-right: $app-content-padding-right;
+$navbar-padding-bottom: 1rem;
+$navbar-padding-left: $app-content-padding-left;
+$navbar-padding:
+        $navbar-padding-top
+        $navbar-padding-right
+        $navbar-padding-bottom
+        $navbar-padding-left;
+
+
+// footer
+$footer-padding-top: 1rem;
+$footer-padding-right: $app-content-padding-right;
+$footer-padding-bottom: 1rem;
+$footer-padding-left: $app-content-padding-left;
+$footer-padding:
+        $footer-padding-top
+        $footer-padding-right
+        $footer-padding-bottom
+        $footer-padding-left;

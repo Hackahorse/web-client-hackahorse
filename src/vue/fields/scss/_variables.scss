@@ -1,0 +1,19 @@
+@import "~@/scss/variables.scss";
+
+$col-field-bg: #fff;
+$col-field-txt: #000;
+$col-field-border: #000;
+$col-field-shadow: #000;
+$col-field-placeholder: #000;
+
+$input-field-padding-top: 1rem;
+$input-field-padding-right: 1rem;
+$input-field-padding-bottom: 1rem;
+$input-field-padding-left: 1rem;
+$input-field-padding:
+        $input-field-padding-top
+        $input-field-padding-right
+        $input-field-padding-bottom
+        $input-field-padding-left;
+
+$input-field-font-size: 1.6rem;

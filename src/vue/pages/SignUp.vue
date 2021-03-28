@@ -1,10 +1,17 @@
 <template>
   <div class="sign-up">
-    <sign-up-form
-      :is-disabled="formMixin.isDisabled"
-      submit-event="submit"
-      @submit="handleChildFormSubmit"
-    />
+    <div class="sign-up__info">
+      <div class="sign-up__title">
+        {{ 'sign-up.title' | globalize }}
+      </div>
+    </div>
+    <div class="sign-up__form">
+      <sign-up-form
+        :is-disabled="formMixin.isDisabled"
+        submit-event="submit"
+        @submit="handleChildFormSubmit"
+      />
+    </div>
   </div>
 </template>
 
@@ -87,4 +94,29 @@ export default {
 @import "~@/scss/variables.scss";
 @import "~@/scss/mixins.scss";
 
+.sign-up {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sign-up__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.sign-up__title {
+  font-weight: 900;
+  font-size: 7em;
+}
+
+.sign-up__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
 </style>

@@ -21,7 +21,7 @@ const router = new VueRouter({
     },
     {
       path: '/sign-up',
-      name: vueRoutes.signIn.name,
+      name: vueRoutes.signUp.name,
       component: _ => import('@/vue/pages/SignUp'),
       beforeEnter: authPageGuard,
     },
@@ -36,6 +36,20 @@ const router = new VueRouter({
           name: vueRoutes.dashboard.name,
           component: _ => import('@/vue/pages/Dashboard'),
           beforeEnter: inAppRouteGuard,
+        },
+        {
+          path: '/marketplace',
+          name: vueRoutes.marketplace.name,
+          component: _ => import('@/vue/pages/Marketplace'),
+          redirect: vueRoutes.marketplaceList,
+          children: [
+            {
+              path: '/marketplace/list',
+              name: vueRoutes.marketplaceList.name,
+              component: _ => import('@/vue/pages/Marketplace/MarketplaceList'),
+              beforeEnter: inAppRouteGuard,
+            },
+          ],
         },
       ],
     },

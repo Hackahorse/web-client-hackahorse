@@ -34,3 +34,12 @@ export function useWallet (newWallet) {
   walletsManager.useApi(api)
   Document.useDocumentsManager(documentsManager)
 }
+
+export async function loadingDataViaLoop (response) {
+  let data = response.data
+  while (response.data.length) {
+    response = await response.fetchNext()
+    data = [...data, ...response.data]
+  }
+  return data
+}

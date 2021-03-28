@@ -1,19 +1,52 @@
 <template>
   <form
-    class="sign-in-form"
+    class="sign-in-form app-form"
     @submit.prevent="isFormValid() && submit()"
   >
-    <input
-      type="text"
-      v-model="form.email"
+    <div class="app-form__field">
+      <input-field
+        v-model="form.email"
+        :label="'sign-in-form.email-lbl' | globalize"
+        :error-message="getFieldErrorMessage('form.email')"
+        @blur="touchField('form.email')"
+        :disabled="formMixin.isDisabled"
+      />
+    </div>
+    <div class="app-form__field">
+      <input-field
+        type="password"
+        v-model="form.password"
+        :label="'sign-in-form.password-lbl' | globalize"
+        :error-message="getFieldErrorMessage('form.password')"
+        @blur="touchField('form.password')"
+        :disabled="formMixin.isDisabled"
+      />
+    </div>
+    <div
+      class="
+        app-form__actions
+        sign-in-form__actions
+      "
     >
-    <input
-      type="text"
-      v-model="form.password"
+      <template v-if="isSubmitting">
+        <loader />
+      </template>
+      <template v-else>
+        <button
+          class="app__button-raised"
+          type="submit"
+          :disabled="formMixin.isDisabled"
+        >
+          {{ 'sign-in-form.submit-btn' | globalize }}
+        </button>
+      </template>
+    </div>
+    <router-link
+      class="app-form__field"
+      :to="vueRoutes.signUp"
     >
-    <button type="submit">
-      Sign in
-    </button>
+      {{ 'sign-in-form.sign-up-link' | globalize }}
+    </router-link>
   </form>
 </template>
 
@@ -25,9 +58,11 @@ import { vuexTypes } from '@/vuex'
 import { errors } from '@/js/errors'
 import { ErrorHandler } from '@/js/helpers/error-handler'
 import { vueRoutes } from '@/vue-router/vueRoutes'
+import Loader from '@/vue/common/Loader'
 
 export default {
   name: 'sign-in-form',
+  components: { Loader },
   mixins: [FormMixin],
   data () {
     return {
@@ -36,6 +71,7 @@ export default {
         password: '',
       },
       isSubmitting: false,
+      vueRoutes,
     }
   },
   validations: {
@@ -122,6 +158,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "./scss/forms";
+
+.sign-in-form__actions {
+  display: flex;
+  justify-content: flex-end;
+}
 
 </style>

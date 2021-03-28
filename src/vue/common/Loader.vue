@@ -1,15 +1,14 @@
 <template>
   <div class="loader">
-    loader
+    <pulse-loader />
   </div>
 </template>
 
 <script>
+import PulseLoader from 'vue-spinner/src/PulseLoader'
+
 export default {
   name: 'loader',
+  components: { PulseLoader },
 }
 </script>
-
-<style lang="scss" scoped>
-.loader {}
-</style>

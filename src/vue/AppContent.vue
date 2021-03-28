@@ -50,10 +50,11 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #ff0000;
 }
 
 .app-content__main-wrapper {
   flex: 1;
+  background: $col-app-content-background;
+  padding: $app-content-padding;
 }
 </style>

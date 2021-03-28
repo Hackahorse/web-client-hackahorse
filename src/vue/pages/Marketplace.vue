@@ -1,12 +1,12 @@
 <template>
-  <footer class="footer">
-    footer
-  </footer>
+  <div class="marketplace">
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'app-footer',
+  name: 'marketplace',
 }
 </script>
 
@@ -14,8 +14,7 @@ export default {
 @import "~@/scss/variables.scss";
 @import "~@/scss/mixins.scss";
 
-.footer {
-  background: $col-footer-background;
-  padding: $footer-padding;
+.marketplace {
+
 }
 </style>
